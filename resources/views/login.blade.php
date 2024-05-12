@@ -60,48 +60,40 @@
                         {{-- <div class="card-header">Login</div> --}}
                         <img src="{{ asset('image/banner.png') }}" alt="Image" class="mt-2 img-fluid mb-4">
                         <div class="card-body">
-                            <form action="" method="">
-                                <div class="form-group row">
-                                    <label for="email_address"
-                                        class="col-md-4 col-form-label text-md-right">Username</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="email_address" class="form-control"
-                                            name="email-address" required autofocus>
-                                    </div>
+                            <form action="{{ route('login.custom') }}" method="POST">
+                                @csrf
+
+                                <!-- Username Field -->
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input type="text" name="username" id="username" class="form-control" required>
+                                    @error('username')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input type="password" id="password" class="form-control" name="password"
-                                            required>
-                                    </div>
+                                <!-- Password Field -->
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
-                                <div class="form-group row">
-                                    <div class="col-md-6 offset-md-4">
-                                        <div class="checkbox">
-                                            {{-- <label>
-                                                <input type="checkbox" name="remember"> Remember Me
-                                            </label> --}}
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary">Login</button>
 
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class=" btn-block btn btn-primary">
-                                        Sign in
-                                    </button>
-                                    {{-- <a href="#" class="btn btn-link">
-                                        Forgot Your Password?
-                                    </a> --}}
-                                </div>
+                                <!-- Display General Error -->
+                                @if ($errors->has('error'))
+                                    <div class="text-danger">{{ $errors->first('error') }}</div>
+                                @endif
+                            </form>
+
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
 
     </main>

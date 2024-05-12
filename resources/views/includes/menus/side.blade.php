@@ -15,12 +15,13 @@
                 <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">MENUS</div>
                 <ul class="pcoded-item pcoded-left-item">
                     <li class="">
-                        <a href="/dashboard" class="waves-effect waves-dark">
+                        <a href="{{ route('admin.dashboard') }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                             <span class="pcoded-mtext">Dashboard</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+
                 </ul>
                 <ul class="pcoded-item pcoded-left-item">
                     <li>
@@ -31,22 +32,23 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="waves-effect waves-dark">
+                        <a href="{{ route('inventory') }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="fa fa-list"></i><b>FC</b></span>
                             <span class="pcoded-mtext">Inventory</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
-
                     </li>
+
                 </ul>
                 <ul class="pcoded-item pcoded-left-item">
                     <li>
-                        <a href="f#" class="waves-effect waves-dark">
+                        <a href="{{ route('delivery.index') }}" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="fa fa-calendar"></i><b>FC</b></span>
                             <span class="pcoded-mtext">Delivery</span>
                             <span class="pcoded-mcaret"></span>
                         </a>
                     </li>
+
                     <li>
                         <a href="/admin/permit" class="waves-effect waves-dark">
                             <span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
@@ -55,19 +57,17 @@
                         </a>
                     </li>
                     <li>
-                        <a href="auth-normal-sign-in.html" class="waves-effect waves-dark">
-                            <form method="POST" action="">
-                                @csrf
-                                {{-- :href="route('logout')"
-                                    onclick="event.preventDefault(); this.closest('form').submit();" --}}
-                                <x-dropdown-link>
-                                    <i class="fas fa-sign-out-alt ml-1 mr-3"></i> {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form>
-
-                            </span>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="" href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt ml-2"></i> <!-- Font Awesome logout icon -->
+                            <span class="ml-3">Logout</span>
                         </a>
                     </li>
+
+
                 </ul>
             </div>
         </nav>
